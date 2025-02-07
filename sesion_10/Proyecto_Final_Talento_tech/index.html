@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio - Energías Renovables</title>
+    <style>
+        body {
+            background-image: url('/static/imagen_fondo1.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            color: #0fef0c;
+            font-family: 'Open Sans', Arial, sans-serif;
+            margin: 0;
+            text-align: center;
+        }
+        nav {
+            background-color: rgba(8, 243, 23, 0.879); /* Color del fondo */
+            color: rgb(15, 15, 15); /* Color del texto */
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px; /* Ajuste del relleno */
+            position: fixed;
+            top: 0; /* Posición al borde superior */
+            left: 0; /* Alineado al borde izquierdo */
+            width: 100%; /* Ocupa todo el ancho */
+            z-index: 1000; /* Coloca la barra sobre otros elementos */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Sombra opcional */
+        }
+        
+        nav .logo {
+            font-size: 2.3em;
+            font-weight: bold;
+            text-shadow: 2px 2px 5px white; /* Línea blanca para resaltar */
+        }
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+        nav ul li {
+            margin: 0 60px;
+        }
+        nav ul li a {
+            color: rgb(21, 19, 19);
+            text-decoration: none;
+            font-size: 2.3em;
+            font-weight: bold;
+            text-shadow: 2px 2px 5px white; /* Línea blanca para resaltar */
+        }
+        nav ul li a:hover {
+            text-decoration: underline;
+        }
+        .title-section {
+            margin-top: 100px; /* Ajuste por la barra de navegación */
+            padding: 20px;
+            text-shadow: 1px 1px 2px black; /* Delineado negro en el texto */
+        }
+        h1 {
+            font-size: 3.5em;
+            font-weight: bold;
+        }
+        p {
+            font-size: 2.5em;
+        }
+    </style>
+</head>
+<body>
+    <!-- Barra de navegación -->
+    <nav>
+        <div class="logo">ENERGIAS RENOVABLES</div>
+        <ul>
+            <li><a href="/portal">Portal</a></li>
+            <li><a href="/chat">Chatbot</a></li>
+        </ul>
+    </nav>
+
+    <!-- Contenido principal -->
+    <div class="title-section">
+        <h1>Bienvenido al Portal de Energías Renovables</h1>
+        <p>Descubre todo sobre la energía solar en Colombia.</p>
+        <script src="/static/chatbot.js"></script>
+    </div>
+    <div id="datetime" style="position: fixed; bottom: 10px; left: 50%; transform: translateX(-50%); background-color: rgba(0, 0, 0, 0.6); color: white; padding: 10px; border-radius: 5px; font-size: 1.2em;">
+        Cargando información de fecha y hora...
+    </div>
+    
+</body>
+</html>
