@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GreenBot 🌍⚡ - Chat</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            background-image: url('/static/images/greenbot_3.png');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            background-color: rgba(0, 0, 0, 0.5);
+            border-radius: 20px;
+            padding: 20px;
+            width: 60%;
+            height: 60%;
+            backdrop-filter: blur(10px);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        }
+        .chat-title {
+            text-align: center;    /* ✅ Centra el título */
+            font-size: 24px;       /* 🔠 Ajusta el tamaño de la letra (prueba 20px si lo quieres más pequeño) */
+            margin-top: 10px;      /* 📏 Ajusta el espacio superior */
+            color: white;          /* 🎨 Mantiene el texto visible si el fondo es oscuro */
+        }
+
+        .chat-output {
+            flex: 1;
+            overflow-y: auto;
+            color: white;
+            padding: 10px;
+            background-color: rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .user-message, .bot-message {
+            font-size: 16px;  /* ✅ Ajusta el tamaño a tu preferencia */
+            padding: 10px;
+            border-radius: 10px;
+            max-width: 80%;
+            word-wrap: break-word;
+        }
+
+        .user-message {
+            background-color: rgba(0, 200, 83, 0.6);
+            align-self: flex-end;
+        }
+
+        .bot-message {
+            background-color: rgba(255, 255, 255, 0.2);
+            align-self: flex-start;
+        }
+        .chat-input {
+            display: flex;
+            gap: 10px;
+        }
+        .chat-input input {
+            flex: 1;
+            padding: 10px;
+            border-radius: 10px;
+            border: none;
+        }
+        .chat-input button {
+            padding: 10px;
+            border-radius: 10px;
+            border: none;
+            background-color: #00C853;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .chat-input button:hover {
+            background-color: #00B347;
+        }
+        .nav-button {
+            position: absolute;
+            background-color: rgba(255, 255, 255, 0.3);
+            border: none;
+            padding: 10px;
+            border-radius: 10px;
+            cursor: pointer;
+            color: white;
+            backdrop-filter: blur(5px);
+            transition: background-color 0.3s;
+            width: 120px; /* Tamaño uniforme */
+            z-index: 1000; /* 🔥 Se asegura de que estén encima del recuadro */
+        }
+
+        .nav-button:hover {
+            background-color: rgba(255, 255, 255, 0.5);
+        }
+    </style>
+</head>
+<body>
+    <!-- Botón de Inicio -->
+    <button class="nav-button" style="top: 20px; right: 20px;" onclick="location.href='/'">🏠 Inicio</button>
+
+    <!-- Botón hacia Portal -->
+    <button class="nav-button" style="top: 70px; right: 20px;" onclick="location.href='/portal'">📂 Portal</button>
+
+    <div class="container">
+        <h1 class="chat-title">🌍⚡ GreenBot - Chat</h1>
+        <div class="chat-output" id="chat-output">
+            <!-- Respuestas del chatbot aparecerán aquí -->
+        </div>
+            <div class="chat-input">
+            <input type="text" id="chat-input" placeholder="Escribe tu pregunta...">
+            <button onclick="sendMessage()">Enviar 🚀</button>
+        </div>
+    </div>
+    <script>
+        const inputField = document.getElementById('chat-input');
+        inputField.addEventListener("keypress", function(event) {
+            if (event.key === "Enter") {
+                event.preventDefault();
+                sendMessage();
+            }
+        });
+    
+        async function sendMessage() {
+            const input = document.getElementById('chat-input').value.trim();
+            if (input !== "") {
+                const outputDiv = document.getElementById('chat-output');
+                const userMessageDiv = document.createElement('div');
+                userMessageDiv.textContent = "🧑‍💻 " + input;
+                userMessageDiv.style.textAlign = "right";
+                userMessageDiv.style.margin = "10px";
+                outputDiv.appendChild(userMessageDiv);
+    
+                try {
+                    const response = await fetch('/chat', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({ message: input }),
+                    });
+    
+                    const data = await response.json();
+                    const botResponseDiv = document.createElement('div');
+                    botResponseDiv.innerHTML = `<pre>🤖 ${data.response}</pre>`;
+                    botResponseDiv.style.textAlign = "left";
+                    botResponseDiv.style.margin = "10px";
+                    outputDiv.appendChild(botResponseDiv);
+    
+                    document.getElementById('chat-input').value = "";
+                    outputDiv.scrollTop = outputDiv.scrollHeight;
+                } catch (error) {
+                    console.error('Error al obtener la respuesta del chatbot:', error);
+                    const errorDiv = document.createElement('div');
+                    errorDiv.textContent = "❌ Error al conectar con GreenBot 🌍⚡. Intenta de nuevo.";
+                    errorDiv.style.color = "red";
+                    outputDiv.appendChild(errorDiv);
+                }
+            }
+        }
+    </script>    
+</body>
+</html>

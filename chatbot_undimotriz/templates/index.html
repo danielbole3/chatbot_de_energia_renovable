@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GreenBot 🌍⚡ - Inicio</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            background-image: url('/static/images/greenbot_2.png');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            background-color: rgba(0, 0, 0, 0.5); /* Reducimos la opacidad al 30% */
+            border-radius: 20px;
+            padding: 30px;
+            width: 60%;
+            height: auto; /* Cambiamos a auto para que se adapte al texto */
+            text-align: center;
+            backdrop-filter: blur(0px); /* Aumentamos el blur de 10px a 20px */
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            filter: brightness(1.1); /* Añadimos brillo como en portal.html */
+        }
+        .container p {
+            color: rgb(163, 163, 163);
+            font-size: 1.7rem; /* Tamaño del párrafo aumentado */
+            line-height: 1.8; /* Mejora la legibilidad */
+        }
+
+        .container h1 {
+            color: rgb(168, 168, 168);
+            margin-bottom: 20px;
+            font-size: 2rem; /* Tamaño del título aumentado */
+        }
+        .container button {
+            padding: 15px 30px;
+            border-radius: 10px;
+            border: none;
+            background-color: #00C853;
+            color: white;
+            cursor: pointer;
+            font-size: 18px;
+            transition: background-color 0.3s;
+        }
+        .container button:hover {
+            background-color: #00B347;
+        }
+        .nav-button {
+            position: absolute;
+            background-color: rgba(255, 255, 255, 0.3);
+            border: none;
+            padding: 10px;
+            border-radius: 10px;
+            cursor: pointer;
+            color: white;
+            backdrop-filter: blur(5px);
+            transition: background-color 0.3s;
+            width: 120px; /* Tamaño uniforme */
+            z-index: 1000; /* 🔥 Se asegura de que estén encima del recuadro */
+        }
+
+        .nav-button:hover {
+            background-color: rgba(255, 255, 255, 0.5);
+        }
+
+    </style>
+</head>
+<body>
+    <!-- Botones fuera del recuadro translúcido -->
+    <button class="nav-button" style="top: 20px; right: 20px;" onclick="location.href='/chat'">💬 greenbot</button>
+    <button class="nav-button" style="top: 70px; right: 20px;" onclick="location.href='/portal'">📂 Portal</button>
+
+    <!-- Recuadro translúcido existente -->
+    <div class="container">
+        <h1>Bienvenido a GreenBot🌍⚡ </h1>
+        <p>Tu asistente inteligente para predecir el consumo y la generación de energía del futuro. 
+            Explora cómo diferentes fuentes de energía impactan el mundo año tras año. 
+            ¡Haz tus preguntas y descubre un futuro energético más sostenible! 🌿🌎</p>
+    </div>
+</body>
+</html>
+```
