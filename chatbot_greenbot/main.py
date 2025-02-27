@@ -56,11 +56,12 @@ def obtener_pais(texto, df):
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
 saludos_respuestas = {
-    "hola": "¡Hola! se sobre consumo y generación de energia en los paises 🌍.",
+    "hola": "¡Hola! bienvenido que informacion deseas resivir  🌍.",
     "gracias": "¡De nada! Estoy aquí para ayudarte. 💡",
     "chao": "¡Hasta luego! Vuelve cuando necesites más información. 👋",
     "hasta luego": "¡Hasta luego! Vuelve cuando necesites más información. 👋",
     "que puedes hacer": "Puedo ayudarte a predecir el uso de energía en el mundo.",
+    "que sabes hacer": "Puedo ayudarte a predecir el uso de energía en el mundo.",
 }
 
 
