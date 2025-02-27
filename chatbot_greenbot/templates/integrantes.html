@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Integrantes - GreenBot 🌍⚡</title>
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            background-image: url('/static/images/greenbot_4.png');
+            background-size: cover;
+            background-position: center top;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            color: #ffffff;
+            font-family: 'Open Sans', Arial, sans-serif;
+        }
+
+        .nav-button {
+            position: absolute;
+            background-color: rgba(255, 255, 255, 0.3);
+            border: none;
+            padding: 10px;
+            border-radius: 10px;
+            cursor: pointer;
+            color: white;
+            backdrop-filter: blur(5px);
+            transition: background-color 0.3s;
+            width: 120px;
+            z-index: 1000;
+        }
+
+        .nav-button:hover {
+            background-color: rgba(255, 255, 255, 0.5);
+        }
+
+        .logo {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 2.3em;
+            font-weight: bold;
+            text-shadow: 2px 2px 5px white;
+            color: white;
+        }
+
+        .content {
+            margin-top: 80px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .integrante {
+            background-color: rgba(0, 0, 0, 0.6);
+            border-radius: 10px;
+            padding: 15px;
+            margin: 20px auto;
+            max-width: 600px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .integrante:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+        .info {
+            display: none;
+            margin-top: 10px;
+            padding: 10px;
+            background-color: rgba(255, 255, 255, 0.5);
+            border-radius: 10px;
+            color: #000;
+        }
+    </style>
+</head>
+<body>
+    <div class="logo">GreenBot 🌍⚡</div>
+    <button class="nav-button" style="top: 20px; right: 20px;" onclick="location.href='/'">🏠 Inicio</button>
+    <button class="nav-button" style="top: 70px; right: 20px;" onclick="location.href='/chat'">💬 greenbot</button>
+    <button class="nav-button" style="top: 120px; right: 20px;" onclick="location.href='/portal'">📚 Portal</button>
+    
+    <div class="content">
+        <h1 style="color: #000;">Equipo de GreenBot </h1>
+        
+        <div class="integrante" onclick="toggleInfo('info1')">
+            <h2>👤 Daniel Alejandro</h2>
+            <div id="info1" class="info">
+                <p><strong>Nombre y Apellido:</strong> Daniel Alejandro Calderón Suassa</p>
+                <p><strong>Correo:</strong> danicalderon7089@gmail.com</p>
+                <p><strong>Github:</strong> <a href="https://github.com/danielbole3" target="_blank">danielbole3</a></p>
+            </div>
+        </div>
+        
+        <div class="integrante" onclick="toggleInfo('info2')">
+            <h2>👤 shirley zea</h2>
+            <div id="info2" class="info">
+                <p><strong>Nombre y Apellido:</strong> shirley zea</p>
+                <p><strong>Correo:</strong> shirlzea1980@hotmail.com</p>
+                <p><strong>Github:</strong> <a href="#" target="_blank">shirleyzea</a></p>
+            </div>
+        </div>
+        
+        <div class="integrante" onclick="toggleInfo('info3')">
+            <h2>👤 astrid lorena</h2>
+            <div id="info3" class="info">
+                <p><strong>Nombre y Apellido:</strong> astrid lorena</p>
+                <p><strong>Correo:</strong> lerecastrohdo@gmail.com</p>
+                <p><strong>Github:</strong> <a href="https://github.com/Lorekstro" target="_blank">Lorekstro</a></p>
+            </div>
+        </div>
+        
+        <div class="integrante" onclick="toggleInfo('info4')">
+            <h2>👤 urley vargas</h2>
+            <div id="info4" class="info">
+                <p><strong>Nombre y Apellido:</strong> urley vargas</p>
+                <p><strong>Correo:</strong> urleyvargasc@yahoo.es</p>
+                <p><strong>Github:</strong> <a href="#" target="_blank">urley</a></p>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        function toggleInfo(id) {
+            let info = document.getElementById(id);
+            info.style.display = (info.style.display === 'none' || info.style.display === '') ? 'block' : 'none';
+        }
+    </script>
+</body>
+</html>

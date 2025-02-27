@@ -19,14 +19,6 @@ app = FastAPI(
     title="greenbot 🌍⚡",
     description="Un chatbot para predecir el consumo de energía en el mundo.",
     version="1.0",
-    contact={
-        "name": "Daniel Alejandro",
-        "email": "danicalderon7089@gmail.com",
-    },
-    license_info={
-        "name": "MIT License",
-        "url": "https://opensource.org/licenses/MIT",
-    },
     docs_url=None
 )
 
@@ -63,18 +55,34 @@ def obtener_pais(texto, df):
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
+saludos_respuestas = {
+    "hola": "¡Hola! se sobre consumo y generación de energia en los paises 🌍.",
+    "gracias": "¡De nada! Estoy aquí para ayudarte. 💡",
+    "chao": "¡Hasta luego! Vuelve cuando necesites más información. 👋",
+    "hasta luego": "¡Hasta luego! Vuelve cuando necesites más información. 👋",
+    "que puedes hacer": "Puedo ayudarte a predecir el uso de energía en el mundo.",
+}
+
+
 @app.get("/chat", response_class=HTMLResponse)
 async def chat_page(request: Request):
-    return templates.TemplateResponse("chat.html", {"request": request})
+    return templates.TemplateResponse("chat.html", {"request": request, "mensaje_bienvenida": ""})
 
 @app.post("/chat")
 async def chat_api(request: Request):
     data = await request.json()
-    user_message = data.get("message", "")
-
-    # Llamar a la lógica completa del chatbot
+    user_message = data.get("message", "").lower()
+    
+    if user_message in saludos_respuestas:
+        return JSONResponse(content={"response": saludos_respuestas[user_message], "sugerencias": []})
+    
     respuesta = await chatbot(query=user_message)
-    return JSONResponse(content={"response": respuesta["respuesta"]})
+    sugerencias = [
+        "¿Cuál es el consumo de energía en 2025?",
+        "¿Cuál fue el consumo de energia en el mundo de 2010 a 2015?",
+        "¿Cuanta energia genero el mundo en 2020?"
+    ]
+    return JSONResponse(content={"response": respuesta["respuesta"], "sugerencias": sugerencias})
 
 @app.get("/", response_class=HTMLResponse)
 async def home(request: Request):
@@ -83,6 +91,10 @@ async def home(request: Request):
 @app.get("/portal", response_class=HTMLResponse)
 async def portal_page(request: Request):
     return templates.TemplateResponse("portal.html", {"request": request})
+
+@app.get("/integrantes", response_class=HTMLResponse)
+async def portal_page(request: Request):
+    return templates.TemplateResponse("integrantes.html", {"request": request})
 
 
 # ✅ Variables globales para los modelos
