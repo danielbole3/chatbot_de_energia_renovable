@@ -56,7 +56,7 @@ def obtener_pais(texto, df):
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
 saludos_respuestas = {
-    "hola": "¡Hola! bienvenido que informacion deseas resivir  🌍.",
+    "hola": "¡Hola! bienvenido que informacion deseas recibir  🌍.",
     "gracias": "¡De nada! Estoy aquí para ayudarte. 💡",
     "chao": "¡Hasta luego! Vuelve cuando necesites más información. 👋",
     "hasta luego": "¡Hasta luego! Vuelve cuando necesites más información. 👋",
